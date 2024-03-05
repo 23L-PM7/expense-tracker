@@ -1,15 +1,45 @@
 import { Inter } from "next/font/google";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Select from "react-select";
 
 const inter = Inter({ subsets: ["latin"] });
 
+const tempcategories = [
+  {
+    id: 1,
+    name: "Home",
+  },
+  {
+    id: 2,
+    name: "Gift",
+  },
+  {
+    id: 3,
+    name: "Food",
+  },
+];
+
 export default function Home() {
+  const [categories, setCategories] = useState([]);
+
   const [name, setName] = useState("Hello");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  useEffect(() => {
+    // fetch('localhost/categories')
+    setCategories(tempcategories);
+  }, []);
+
+  const options = categories.map((category) => {
+    return {
+      value: category.id,
+      label: category.name,
+    };
+  });
 
   function handleSubmit() {
-    console.log({ name, description, category });
+    console.log({ name, description, categoryId: selectedOption.value });
   }
 
   return (
@@ -18,12 +48,7 @@ export default function Home() {
       <br />
       <textarea placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
       <br />
-      <select value={category} onChange={(e) => setCategory(e.target.value)}>
-        <option></option>
-        <option>HTML</option>
-        <option>CSS</option>
-        <option>JS</option>
-      </select>
+      <Select options={options} defaultValue={selectedOption} onChange={(value) => setSelectedOption(value)} />
       <br />
       <button onClick={handleSubmit}>Submit</button>
     </main>

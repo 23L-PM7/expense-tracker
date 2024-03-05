@@ -1,5 +1,5 @@
 create table categories (
-    id VARCHAR(21) PRIMARY KEY, #
+    id VARCHAR(40) PRIMARY KEY, #
     name VARCHAR(55) #
 )
 
