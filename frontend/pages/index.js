@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
 import Select from "react-select";
@@ -27,7 +28,11 @@ export default function Home() {
   const [selectedOption, setSelectedOption] = useState(null);
 
   useEffect(() => {
+    const login = localStorage.getItem("login");
+    axios.get(`http://localhost:3000/categories?loginInfo=${login}`);
+
     // fetch('localhost/categories')
+
     setCategories(tempcategories);
   }, []);
 

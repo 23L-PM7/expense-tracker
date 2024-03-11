@@ -4,6 +4,11 @@ const { sql } = require("../config/database");
 const { v4: uuidv4 } = require("uuid");
 
 router.get("/", async (req, res) => {
+  if (req.query.loginInfo !== "erka@pinecone.mn:12345678") {
+    res.sendStatus(401);
+    return;
+  }
+
   const result = await sql`select * from transactions`;
   res.json(result);
 });

@@ -9,6 +9,28 @@ app.use(express.json());
 app.use(cors());
 
 app.use("/transactions", transactionRouter);
+
+const dbUsername = "erka@pinecone.mn";
+const dbPassword = "12345678";
+
+app.post("/login", (req, res) => {
+  const { email, pass } = req.body;
+
+  if (email !== dbUsername) {
+    res.sendStatus(401);
+    return;
+  }
+
+  if (pass !== dbPassword) {
+    res.sendStatus(401);
+    return;
+  }
+
+  console.log({ email, pass });
+
+  res.json(["Success"]);
+});
+
 // app.use("/categories", categoriesRouter);
 // app.use("/users", usersRouter);
 
