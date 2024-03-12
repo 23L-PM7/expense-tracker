@@ -56,8 +56,8 @@ const labels = [
   "December",
 ];
 
-const expanse = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 900, 800];
-const income = [100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 900, 800];
+const expanse = [100, 123, 100, 123, 100, 123, 100, 123, 100, 123, 100, 100];
+const income = [100, 80, 100, 123, 100, 123, 100, 123, 123, 100, 123, 100];
 
 export const data = {
   labels,
@@ -65,7 +65,7 @@ export const data = {
     {
       label: "Expanse",
       data: expanse,
-      backgroundColor: "red",
+      backgroundColor: "blue",
       stack: "Stack 0",
     },
     {

@@ -1,7 +1,6 @@
 import axios from "axios";
 import { Inter } from "next/font/google";
 import { useEffect, useState } from "react";
-import Select from "react-select";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,21 +26,21 @@ export default function Home() {
   const [description, setDescription] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
 
-  useEffect(() => {
-    const login = localStorage.getItem("login");
-    axios.get(`http://localhost:3000/categories?loginInfo=${login}`);
+  // useEffect(() => {
+  //   const login = localStorage.getItem("login");
+  //   axios.get(`http://localhost:3000/categories?loginInfo=${login}`);
 
-    // fetch('localhost/categories')
+  //   fetch("localhost/categories");
 
-    setCategories(tempcategories);
-  }, []);
+  //   setCategories(tempcategories);
+  // }, []);
 
-  const options = categories.map((category) => {
-    return {
-      value: category.id,
-      label: category.name,
-    };
-  });
+  // const options = categories.map((category) => {
+  //   return {
+  //     value: category.id,
+  //     label: category.name,
+  //   };
+  // });
 
   function handleSubmit() {
     console.log({ name, description, categoryId: selectedOption.value });
@@ -49,11 +48,19 @@ export default function Home() {
 
   return (
     <main className={``}>
-      <input type="text" placeholder="name" value={name} onChange={(e) => setName(e.target.value)} />
+      <input
+        type="text"
+        placeholder="name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
       <br />
-      <textarea placeholder="description" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+      <textarea
+        placeholder="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      ></textarea>
       <br />
-      <Select options={options} defaultValue={selectedOption} onChange={(value) => setSelectedOption(value)} />
       <br />
       <button onClick={handleSubmit}>Submit</button>
     </main>
