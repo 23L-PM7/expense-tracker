@@ -1,3 +1,9 @@
+create table users (
+    id VARCHAR(40) PRIMARY KEY, #
+    username VARCHAR(40) UNIQUE, # email
+    password VARCHAR(100) #
+)
+
 create table categories (
     id VARCHAR(40) PRIMARY KEY, #
     name VARCHAR(55) #
